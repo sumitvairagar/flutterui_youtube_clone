@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'home_screen.dart';
+
 class NavScreen extends StatefulWidget {
   const NavScreen({Key? key}) : super(key: key);
 
@@ -9,9 +11,46 @@ class NavScreen extends StatefulWidget {
 
 class _NavScreenState extends State<NavScreen> {
   int _selectedIndex = 0;
+
+  final _screens = [
+    HomeScreen(),
+    const Scaffold(
+      body: Center(
+        child: Text("Explore"),
+      ),
+    ),
+    const Scaffold(
+      body: Center(
+        child: Text("Add"),
+      ),
+    ),
+    const Scaffold(
+      body: Center(
+        child: Text("Subscriptions"),
+      ),
+    ),
+    const Scaffold(
+      body: Center(
+        child: Text("Library"),
+      ),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: Stack(
+        children: _screens.asMap().map(
+              (i, screen) => MapEntry(
+                i,
+                Offstage(
+                  offstage: i != _selectedIndex,
+                  child: screen,
+                ),
+              ),
+            )
+         .values.toList(),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         selectedFontSize: 10.0,
@@ -20,7 +59,7 @@ class _NavScreenState extends State<NavScreen> {
         onTap: (index) => setState(() {
           _selectedIndex = index;
         }),
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             activeIcon: Icon(Icons.home),
