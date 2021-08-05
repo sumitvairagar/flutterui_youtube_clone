@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_youtube_ui/screens/nav_screen.dart';
+import 'package:miniplayer/miniplayer.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import '../data.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,8 +13,9 @@ class VideoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => {
-        context.read(selectedVideoProvider).state = video
+      onTap: ()  {
+        context.read(selectedVideoProvider).state = video;
+        context.read(miniPlayerControllerProvider).state.animateToHeight(state: PanelState.MAX);
       },
       child: Column(
         children: [
