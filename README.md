@@ -1,5 +1,9 @@
 # flutter_youtube_ui
 
+Followed this tutorial.
+
+https://www.youtube.com/watch?v=umhl2hakkcY
+
 Flutter Youtube Clone UI
 
 <div align="center" style="display: flex; justify-content:space-around;" >
