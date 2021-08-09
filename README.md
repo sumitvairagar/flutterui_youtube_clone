@@ -1,6 +1,6 @@
 # flutter_youtube_ui
 
-A new Flutter project.
+Flutter Youtube Clone UI
 
 ## Getting Started
 
